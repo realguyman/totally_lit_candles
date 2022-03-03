@@ -1,0 +1,28 @@
+{
+  "authors": [
+    {
+      "contact": {
+        "email": "realguyman@protonmail.com",
+        "homepage": "https://github.com/realguyman"
+      },
+      "name": "realguyman"
+    }
+  ],
+  "contact": {
+    "issues": "https://github.com/realguyman/totally_lit_candles/issues",
+    "sources": "https://github.com/realguyman/totally_lit_candles"
+  },
+  "depends": {
+    "fabricloader": ">=0.11.2",
+    "java": ">=16",
+    "minecraft": "~1.17.0"
+  },
+  "description": "Candles can extinguish under various conditions.",
+  "id": "totally_lit_candles",
+  "license": "LGPL-3.0-or-later",
+  "name": "Totally Lit - Candles",
+  "environment": "*",
+  "mixins": ["mixins.json"],
+  "schemaVersion": 1,
+  "version": "${version}"
+}
