@@ -1,5 +1,6 @@
 package com.github.realguyman.totally_lit_candles.mixin;
 
+import com.github.realguyman.totally_lit_candles.CommonInitializer;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractCandleBlock;
 import net.minecraft.block.Block;
@@ -24,8 +25,8 @@ public abstract class AbstractBlockMixin {
             final ServerTickScheduler<Block> scheduler = world.getBlockTickScheduler();
             final Block block = state.getBlock();
 
-            if (!scheduler.isScheduled(pos, block)) {
-                scheduler.schedule(pos, block, 18_000);
+            if (world.getGameRules().getBoolean(CommonInitializer.DO_CANDLES_EXTINGUISH_OVER_TIME) && !scheduler.isScheduled(pos, block)) {
+                scheduler.schedule(pos, block, Math.min(168_000, Math.max(6_000, world.getGameRules().getInt(CommonInitializer.CANDLE_BURN_DURATION))));
             }
 
             ci.cancel();

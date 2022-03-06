@@ -12,7 +12,18 @@
     "issues": "https://github.com/realguyman/totally_lit_candles/issues",
     "sources": "https://github.com/realguyman/totally_lit_candles"
   },
+  "entrypoints": {
+    "main": ["com.github.realguyman.totally_lit_candles.CommonInitializer"]
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/JkEe8aMJUD"
+      }
+    }
+  },
   "depends": {
+    "fabric-game-rule-api-v1": "^1.0.0",
     "fabricloader": ">=0.11.2",
     "java": ">=16",
     "minecraft": "~1.17.0"
