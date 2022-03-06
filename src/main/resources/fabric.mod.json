@@ -33,7 +33,7 @@
   "license": "LGPL-3.0-or-later",
   "name": "Totally Lit - Candles",
   "environment": "*",
-  "mixins": ["mixins.json"],
+  "mixins": ["totally_lit_candles.mixins.json"],
   "schemaVersion": 1,
   "version": "${version}"
 }
