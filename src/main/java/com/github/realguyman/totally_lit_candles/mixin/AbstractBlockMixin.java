@@ -21,7 +21,7 @@ import java.util.Random;
 public abstract class AbstractBlockMixin {
     @Inject(method = "randomTick", at = @At("HEAD"), cancellable = true)
     private void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci) {
-        if (AbstractCandleBlock.isLitCandle(state) && !world.hasRain(pos.up())) {
+        if (AbstractCandleBlock.isLitCandle(state) && !(world.getGameRules().getBoolean(CommonInitializer.DO_CANDLES_EXTINGUISH_IN_RAIN) && world.hasRain(pos.up()))) {
             final ServerTickScheduler<Block> scheduler = world.getBlockTickScheduler();
             final Block block = state.getBlock();
 
