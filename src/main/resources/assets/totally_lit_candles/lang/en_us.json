@@ -1,0 +1,5 @@
+{
+  "gamerule.candleBurnDuration": "Candle burn duration",
+  "gamerule.doCandlesExtinguishInRain": "Do candles extinguish in rain",
+  "gamerule.doCandlesExtinguishOverTime": "Do candles extinguish over time"
+}
