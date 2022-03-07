@@ -27,7 +27,7 @@ public class BlockMixin {
     @Inject(method = "onBreak", at = @At("HEAD"))
     private void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player, CallbackInfo ci) {
         if (!world.isClient() && (state.isIn(BlockTags.CANDLES) || state.isIn(BlockTags.CANDLE_CAKES))) {
-            ((ServerWorld) world).getBlockTickScheduler().getScheduledTicks(new BlockBox(pos), false, true).clear();
+            ((ServerWorld) world).getBlockTickScheduler().clearNextTicks(new BlockBox(pos));
         }
     }
 }

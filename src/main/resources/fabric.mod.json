@@ -25,8 +25,8 @@
   "depends": {
     "fabric-game-rule-api-v1": "^1.0.0",
     "fabricloader": ">=0.11.2",
-    "java": ">=16",
-    "minecraft": "~1.17.0"
+    "java": ">=17",
+    "minecraft": "1.18.2"
   },
   "description": "Candles can extinguish under various conditions.",
   "id": "totally_lit_candles",

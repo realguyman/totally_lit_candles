@@ -5,7 +5,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractCandleBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.server.world.ServerTickScheduler;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Properties;
 import net.minecraft.tag.BlockTags;
@@ -22,11 +21,10 @@ public abstract class AbstractBlockMixin {
     @Inject(method = "randomTick", at = @At("HEAD"), cancellable = true)
     private void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci) {
         if (AbstractCandleBlock.isLitCandle(state) && !(world.getGameRules().getBoolean(CommonInitializer.DO_CANDLES_EXTINGUISH_IN_RAIN) && world.hasRain(pos.up()))) {
-            final ServerTickScheduler<Block> scheduler = world.getBlockTickScheduler();
             final Block block = state.getBlock();
 
-            if (world.getGameRules().getBoolean(CommonInitializer.DO_CANDLES_EXTINGUISH_OVER_TIME) && !scheduler.isScheduled(pos, block)) {
-                scheduler.schedule(pos, block, Math.min(168_000, Math.max(6_000, world.getGameRules().getInt(CommonInitializer.CANDLE_BURN_DURATION))));
+            if (world.getGameRules().getBoolean(CommonInitializer.DO_CANDLES_EXTINGUISH_OVER_TIME) && !world.getBlockTickScheduler().isQueued(pos, block)) {
+                world.createAndScheduleBlockTick(pos, block, Math.min(168_000, Math.max(6_000, world.getGameRules().getInt(CommonInitializer.CANDLE_BURN_DURATION))));
             }
 
             ci.cancel();
